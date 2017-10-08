@@ -1,0 +1,20 @@
+{
+  "name": "akai-events",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "akai-assets": "^0.0.1",
+    "akai-onepage": "^0.0.4",
+    "express": "^4.16.1",
+    "mongodb": "^2.2.31"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.2"
+  }
+}
