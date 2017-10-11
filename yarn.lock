@@ -13,9 +13,9 @@ akai-assets@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/akai-assets/-/akai-assets-0.0.1.tgz#c244fb8287f93d8857d7e7b1c3f84de393e1a1dc"
 
-akai-onepage@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/akai-onepage/-/akai-onepage-0.0.4.tgz#a0c7754156e5bfb25c0baa3c9cebe90960a0e626"
+akai-onepage@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/akai-onepage/-/akai-onepage-0.0.5.tgz#2208f24a5f6682fca76995ddb8de59071ea00bc2"
   dependencies:
     jquery "^3.2.1"
 

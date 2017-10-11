@@ -1,76 +1,59 @@
 const express = require('express');
 const app = express();
 
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+const Events = require('./events');
+let events = {};
+let updatedAt;
 
-var findDocuments = function(db, callback) {
-  var collection = db.collection('events');
-  collection.find({}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs);
-    callback(docs);
-  });
+const updateEvents = () => {
+  if ( !updatedAt || (updatedAt - new Date > 60000) ) {
+    Events.get().then( data => events = data );
+    updatedAt = new Date;
+  }
 };
 
-let events = {};
-let eventsList = {};
+const renderPage = (page) => {
+  if (!page) {
+    return renderPage( {
+      title: "Strona nie została znaleziona",
+      components: []
+    } );
+  }
 
-// Use connect method to connect to the server
-MongoClient.connect('mongodb://localhost:27017/events', function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-  findDocuments(db, function (data) {
-    data.forEach( (e) => {
-      events[e.title] = e;
-      //delete e.components;
-      //eventsList[e.title] = e;
-    } )
-  });
-  db.close();
-});
+  const pageRenderer = require('akai-onepage/src/js/pageRenderer');
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>${ page.title }</title>
+      <link href="assets/main.css" rel="stylesheet"></head>
+      <body>
+        ${ pageRenderer.render( page ) }
+      </body>
+    </html>
+  `;
+};
 
 app.use('/assets', express.static('node_modules/akai-onepage/build/assets'));
 app.use('/img', express.static('node_modules/akai-assets'));
 
+app.use(function (req, res, next) {
+  updateEvents();
+  next();
+});
+
 app.get('/:event', function (req, res) {
-  if(!events[req.params.event]) {
-    res.send('404');
-  } else {
-    res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>Webpack App</title>
-      <link href="assets/main.css" rel="stylesheet"></head>
-      <body>
-      <script>
-        window.config = ${JSON.stringify( events[req.params.event] )};
-      </script>
-      <script type="text/javascript" src="assets/bundle.js"></script></body>
-    </html>
-  `);
-  }
+  const page = events[req.params.event];
+  res.send( renderPage(page) );
 });
 
 app.get('/', function (req, res) {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>Webpack App</title>
-      <link href="assets/main.css" rel="stylesheet"></head>
-      <body>
-      <script>
-      </script>
-      <script type="text/javascript" src="assets/bundle.js"></script></body>
-    </html>
-  `);
+  const page = events[req.params.event];
+  res.send( renderPage(page) );
 });
 
 app.listen(3003, function () {
-  console.log('Example app listening on port 3000!')
+  updateEvents();
+  console.log('Example app listening on port 3003!')
 });

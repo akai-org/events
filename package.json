@@ -4,13 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app/app.js",
+    "mongo": "mongod --dbpath=data",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "akai-assets": "^0.0.1",
-    "akai-onepage": "^0.0.4",
+    "akai-onepage": "^0.0.5",
     "express": "^4.16.1",
     "mongodb": "^2.2.31"
   },
