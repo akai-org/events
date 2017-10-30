@@ -31,7 +31,7 @@ const renderPage = (page) => {
       <head>
         <meta charset="UTF-8">
         <title>${ page.title }</title>
-      <link href="assets/main.css" rel="stylesheet"></head>
+      <link href="/js/assets/main.css" rel="stylesheet"></head>
       <body>
         ${ pageRenderer.render(page) }
       </body>
