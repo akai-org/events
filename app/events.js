@@ -13,7 +13,7 @@ const findDocuments = function (db, callback) {
 
 const getEvents = () => {
   return new Promise((resolve, reject) => {
-    MongoClient.connect('mongodb://localhost:27017/events', function (err, db) {
+    MongoClient.connect('mongodb://localhost:27017/local', function (err, db) {
       if (err) {
         reject();
       }
