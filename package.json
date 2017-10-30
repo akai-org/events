@@ -12,9 +12,10 @@
   "license": "MIT",
   "dependencies": {
     "akai-assets": "^0.0.1",
-    "akai-onepage": "^0.0.5",
+    "akai-onepage": "^0.0.6",
     "express": "^4.16.1",
-    "mongodb": "^2.2.31"
+    "mongodb": "^2.2.31",
+    "nodemailer": "^4.2.0"
   },
   "devDependencies": {
     "babel-loader": "^7.1.2"

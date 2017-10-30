@@ -13,9 +13,9 @@ akai-assets@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/akai-assets/-/akai-assets-0.0.1.tgz#c244fb8287f93d8857d7e7b1c3f84de393e1a1dc"
 
-akai-onepage@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/akai-onepage/-/akai-onepage-0.0.5.tgz#2208f24a5f6682fca76995ddb8de59071ea00bc2"
+akai-onepage@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/akai-onepage/-/akai-onepage-0.0.6.tgz#1a8ea067decc74691184b3c4bb41c6f3ab8de8df"
   dependencies:
     jquery "^3.2.1"
 
@@ -305,6 +305,10 @@ ms@2.0.0:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+nodemailer@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.2.0.tgz#310781d30130bc5b7bf756bb626ec27564c5079b"
 
 on-finished@~2.3.0:
   version "2.3.0"
