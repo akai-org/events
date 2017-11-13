@@ -29,13 +29,21 @@ router.use((req, res, next) => {
 router.get('/:title\.json', async (req, res) => {
   const event = await database.select( 'events', { title: req.param('title') } );
   trackPageView(req, 'AKAI Events API', event[0].title);
-  res.send(event[0]);
+  if(event[0]) {
+    res.send(event[0]);
+  } else {
+    res.send('');
+  }
 });
 
 router.get('/:title', async (req, res) => {
   const event = await database.select( 'events', { title: req.param('title') } );
   trackPageView(req, 'AKAI Events', event[0].title);
-  res.send(renderer.renderPage(event[0]));
+  if(event[0]) {
+    res.send(renderer.renderPage(event[0]));
+  } else {
+    res.send('');
+  }
 });
 
 router.post('/:title', function (req, res) {

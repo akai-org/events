@@ -4,7 +4,7 @@ const assert = require('assert');
 const Database = require('./database');
 
 class MongoDatabase extends Database {
-  constructor(url = 'mongodb://localhost:27017/events') {
+  constructor(url = 'mongodb://localhost:27017/local') {
     super();
     this._mongo = {};
     this._mongo.url = url;
