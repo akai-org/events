@@ -27,6 +27,39 @@ class MongoDatabase extends Database {
         });
     });
   }
+
+  insert(collection = 'events', document = {}) {
+    return new Promise((resolve, reject) => {
+      MongoClient.connect(this._mongo.url)
+        .then((db) => {
+          db.collection(collection)
+            .insertOne(document, (err, record) => {
+              if(err) reject(err);
+              resolve(record._id);
+              db.close();
+            });
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  update(collection = 'events', query = {}, document = {}) {
+    return new Promise((resolve, reject) => {
+      MongoClient.connect(this._mongo.url)
+        .then((db) => {
+          db.collection(collection)
+            .updateOne(query, document, (err, records) => {
+              resolve(record._id);
+              db.close();
+            });
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 module.exports = MongoDatabase;
