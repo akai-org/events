@@ -27,5 +27,6 @@
   },
   "devDependencies": {
     "babel-loader": "^7.1.2"
-  }
+  },
+  "background": "#9CCB5B"
 }
